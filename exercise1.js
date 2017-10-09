@@ -1,4 +1,6 @@
 'use strict';
+// In this exercise, we'll set up and initialize the Box Node SDK. 
+// To verify everything is working after we created our Box applications, we'll log out the Service Account login field.
 const box = require('box-node-sdk');
 const fs = require('fs');
 const { errorHandlers } = require('./util');
@@ -18,9 +20,11 @@ let serviceAccountClient = session.getAppAuthClient('enterprise');
 // The Service Account also serves as the backbone of your application and is often used to manage both App and Managed users in your Box Enterprise.
 serviceAccountClient.users.get('me', null)
     .then((serviceAccountUser) => {
-        // We log 
+        // We log the Service Account's login information which is a special generated email address.
+        // The email address should resemble AutomationUser...@boxdeveloperedition.com
         console.log(serviceAccountUser.login);
     })
     .catch(err => {
+        // Check the errorHandler.js file under ./util to see how we handle errors with the Node.js SDK
         console.log(errorHandlers.errorHandler(err));
     });

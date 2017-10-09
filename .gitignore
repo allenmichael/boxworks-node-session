@@ -2,6 +2,8 @@ build/
 coverage/
 npm-debug.log
 config.json
+db.json
+test.txt
 
 node_modules/
 .DS_Store
